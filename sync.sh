@@ -1,5 +1,6 @@
 USERNAME="pi"
-HOSTNAME="joker-pi"
+#HOSTNAME="joker-pi"
+HOSTNAME="192.168.2.113"
 TARGET=/home/${USERNAME}/scripts/
 
 #rsync -avhe ssh --delete . ${USERNAME}@${HOSTNAME}:$TARGET

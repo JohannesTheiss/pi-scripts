@@ -9,6 +9,10 @@ cp /home/${USERNAME}/Documents/dotfiles/vimrc /home/${USERNAME}/.vimrc
 
 # set vim alias to bashrc
 echo "alias v=\"vim\"" >> /home/${USERNAME}/.bashrc
+
+### install xrdp server
+apt install xrdp -y
+
  
 ### install Qt 5.15
 # install qmake
