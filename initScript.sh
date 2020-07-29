@@ -28,4 +28,13 @@ else
     echo "can't expand filesystem"
 fi
 
+# disable bluetooth
+#echo "dtoverlay=disable-bt" >> /boot/config.txt
+#systemctl disable hciuart.service
+#systemctl disable bluealsa.service
+#systemctl disable bluetooth.service
+
+# disable wifi (dev !!)
+#echo "dtoverlay=disable-wifi" >> /boot/config.txt
+
 reboot

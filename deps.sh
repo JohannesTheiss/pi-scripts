@@ -16,3 +16,5 @@ apt install xrdp -y
  
 ### install Qt 5.15
 # install qmake
+apt-get install qt5-default -y
+#apt install qml -y
