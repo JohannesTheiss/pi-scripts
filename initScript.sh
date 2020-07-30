@@ -10,6 +10,7 @@ LAYOUT=de
 # updates
 apt update
 apt upgrade -y
+# apt dist-upgrade -y
 
 # set hostname
 raspi-config nonint do_hostname ${HOSTNAME} 
