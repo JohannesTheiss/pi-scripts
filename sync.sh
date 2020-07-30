@@ -1,3 +1,5 @@
+#!/bin/bash
+
 USERNAME="pi"
 #HOSTNAME="joker-pi"
 HOSTNAME="192.168.2.113"
