@@ -28,6 +28,7 @@ echo -e "\e[1;32mmake GPS-Logbook directory....\e[0m"
 gpsFolder=/usr/local/GPS-Logbook
 mkdir $gpsFolder
 
+
 ### download qt 5.15 ###
 sourceName="qt-everywhere-src-5.15.0.tar.xz"
 if [[ ! -e $gpsFolder/$sourceName ]]
@@ -48,11 +49,28 @@ then
     echo "$check"
 else
     echo -e "\e[1;31mno match\e[0m" 
+    echo "$check != $md5Hack"
     exit 1
 fi
 
 ### un-tar the source
-# VERBOSE ???
 echo -e "\e[1;32mun-tar the source....\e[0m" 
-tar xf $gpsFolder/$sourceName -C $gpsFolder
+tar -vxf $gpsFolder/$sourceName -C $gpsFolder
+
+echo -e "\e[1;32mget mkspecs configuration files....\e[0m" 
+git clone https://github.com/oniongarlic/qt-raspberrypi-configuration.git $gpsFolder/qt-raspberrypi-configuration
+# FIX VERSION !!!
+#cd qt-raspberrypi-configuration && make install DESTDIR=$gpsFolder/qt-everywhere-src-5.15.0
+make -C $gpsFolder/qt-raspberrypi-configuration install DESTDIR=$gpsFolder/qt-everywhere-src-5.15.0
+
+
+apt update
+apt install build-essential libfontconfig1-dev libdbus-1-dev libfreetype6-dev libicu-dev libinput-dev libxkbcommon-dev libsqlite3-dev libssl-dev libpng-dev libjpeg-dev libglib2.0-dev libraspberrypi-dev -y
+
+
+echo -e "\e[1;32mmake build dir....\e[0m" 
+
+mkdir $gpsFolder/gt-raspberrypi-configuration/build 
+#cd build
+ 
 
