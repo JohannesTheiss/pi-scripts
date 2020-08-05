@@ -1,0 +1,26 @@
+ 
+// started die anwendung in der DE
+export DISPLAY=:0
+sudo startx &
+sudo ./qopenglwidget
+
+
+// führt die software remote aus un zeigt sie lokal
+ssh pi@192.168.2.116 -X /home/pi/qopenglwidget
+// oder
+ssh j -X
+./qopenglwidget
+
+// startet die anwendung OHNE DE
+sudo xinit ./qopenglwidget $* -- :0
+
+
+sudo startx ./qopenglwidget
+
+
+sudo startx ~/.xinitrc
+(in .xinitrc: exec /home/pi/qopenglwidget
+
+
+zum beenden:
+sudo kill [PID von xinit]
