@@ -17,6 +17,12 @@ echo "alias v=\"vim\"" >> /home/${USERNAME}/.bashrc
 echo -e "\e[1;32minstall xrdp....\e[0m" 
 apt install xrdp -y
 
+# install pinout tool
+# sudo apt install python3-gpiozero
+
+
+
+
  
 ###### install Qt 5.15 #######
 # install qmake
@@ -74,3 +80,9 @@ mkdir $gpsFolder/gt-raspberrypi-configuration/build
 #cd build
  
 
+
+
+
+# clean up
+apt clean
+apt autoremove
