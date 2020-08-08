@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# USERNAME="root"
-HOSTNAME="joker-pi"
+#USERNAME="admin"
+HOSTNAME="gpslogbook"
 LOCALE=de_DE.UTF-8
 LAYOUT=de
 WIFICOUNTRY=DE
@@ -32,8 +32,6 @@ raspi-config nonint do_configure_keyboard ${LAYOUT}
 raspi-config nonint do_wifi_country ${WIFICOUNTRY}
 
 #### reduce energy consumption #### 
-# add to config.txt
-
 # disable HDMI 
 # add 
 #disable_splash=1 # disable rainbow splash screen on boot
@@ -58,6 +56,7 @@ systemctl disable bluetooth.service
 # wie geht das dann wieder da raus? sed -i -e '$i sh ${DIR}/deps.sh &\n' rc.local
 
 
+# add to config.txt
 cat << LINES >> /boot/config.txt
 # disable bluetooth
 dtoverlay=disable-bt
@@ -78,9 +77,12 @@ else
 fi
 
 
+# print setting 
 vcgencmd get_config int
 vcgencmd get_config str
 
+
+# reboot
 read -p "reboot? [y/n] " -n 1 -r
 echo    # (optional) move to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]

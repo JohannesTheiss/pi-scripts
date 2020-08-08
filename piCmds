@@ -6,7 +6,7 @@ sudo ./qopenglwidget
 
 
 // führt die software remote aus un zeigt sie lokal
-ssh pi@192.168.2.116 -X /home/pi/qopenglwidget
+ssh pi@joker-pi -X /home/pi/qopenglwidget
 // oder
 ssh j -X
 ./qopenglwidget
