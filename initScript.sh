@@ -10,6 +10,9 @@ WIFICOUNTRY=DE
 # add pi to root group
 # sudo usermod -aG root pi
 
+# enable development sources 
+echo "deb-src http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi" >> /etc/apt/sources.list
+
 #### updates #### 
 apt update
 apt upgrade -y
