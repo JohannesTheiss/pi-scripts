@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# usage: ./sync.sh <fromPath> <toPath>
+
 USERNAME="pi"
 #HOSTNAME="joker-pi"
 HOSTNAME="192.168.2.113"
