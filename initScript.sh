@@ -47,7 +47,8 @@ raspi-config nonint do_change_locale ${LOCALE}
 
 # keyboard layout
 echo -e "\e[1;32mset keyboard layout....\e[0m" 
-raspi-config nonint do_configure_keyboard ${LAYOUT}
+# error on tty (dead_belowmacron)
+raspi-config nonint do_configure_keyboard ${LAYOUT} 
 
 # set wifi country 
 echo -e "\e[1;32mset wifi country....\e[0m" 
@@ -65,7 +66,7 @@ raspi-config nonint do_wifi_country ${WIFICOUNTRY}
 # disable bluetooth
 echo -e "\e[1;32mdisable bluetooth....\e[0m" 
 systemctl disable hciuart.service
-systemctl disable bluealsa.service
+# systemctl disable bluealsa.service -> does not exist
 systemctl disable bluetooth.service
 
 
@@ -102,9 +103,9 @@ else
 fi
 
 
-# print setting 
-vcgencmd get_config int
-vcgencmd get_config str
+# print setting  ... but why
+#vcgencmd get_config int
+#vcgencmd get_config str
 
 
 # reboot
