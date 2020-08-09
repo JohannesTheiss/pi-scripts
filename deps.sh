@@ -58,6 +58,11 @@ chown -R $USERNAME:$USERNAME /usr/local/qt5
 
 
 
+# install X-server
+#apt-get Install xserver-xorg
+#apt-get Install xterm
+
+
 
 # clean up
 echo -e "\e[1;32mclean up....\e[0m" 
