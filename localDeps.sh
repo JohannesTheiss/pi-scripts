@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WORKINGDIR=/home/johannes/fh/GPS_Logbook/raspi-qt
+WORKINGDIR=/home/johannes/Schreibtisch/raspi-qt
 SOURCEDIR=$WORKINGDIR/qt-src
 
 PIUSER="admin"
@@ -59,7 +59,7 @@ for i in ${!modules[@]}; do
 
     # un-tar the source
     echo -e "\e[1;32mun-tar ${modules[$i]}....\e[0m" 
-    tar -vxf $SOURCEDIR/${modules[$i]} -C $SOURCEDIR/${modules[$i]}
+    tar -vxf $SOURCEDIR/${modules[$i]} -C $SOURCEDIR/${modules[$i]} # !!!! CHANGE THE OUTPUT NAME
 done
 
 
