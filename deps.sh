@@ -38,16 +38,25 @@ apt build-dep libqt5gui5
 # optional
 #apt build-dep libqt5webengine-data
 #apt build-dep libqt5webkit5
+# wiringpi libnfc-bin libnfc-dev fonts-texgyre libts-dev
+# libbluetooth-dev bluez-tools gstreamer1.0-plugins* libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libopenal-data libsndio7.0 libopenal1 libopenal-dev pulseaudio
+
 
 # gdbserver for remote debugging
 apt install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 gdbserver
 
-# create qt folder
 
+## Add pi user to render group ????
+# sudo gpasswd -a pi render
+
+
+# create qt folder
 echo -e "\e[1;32mcreate qt-directory....\e[0m" 
 #apt install qt5-default -y ???
 mkdir /usr/local/qt5
 chown -R $USERNAME:$USERNAME /usr/local/qt5
+
+
 
 
 # clean up
