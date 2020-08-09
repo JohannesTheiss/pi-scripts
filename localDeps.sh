@@ -3,6 +3,12 @@
 WORKINGDIR=/home/johannes/fh/GPS_Logbook/raspi-qt
 SOURCEDIR=$WORKINGDIR/qt-src
 
+PIUSER="admin"
+PINAME="gpslogbook"
+
+# number of cores you like to use for the complication.
+CORES=4
+
 # ssh-key stuff ....
 
 ##### create working directory #####
@@ -44,7 +50,7 @@ for i in ${!modules[@]}; do
         echo -e "\e[1;32mMatch\e[0m" 
         echo "$check"
     else
-        echo -e "\e[1;31mno match (SHIT... Man-in-the-Middle)\e[0m" 
+        echo -e "\e[1;31mno match (Man-in-the-Middle... SHIT)\e[0m" 
         echo "$check != $md5Hack"
         exit 1
     fi
@@ -60,7 +66,6 @@ done
 # to replace symbolic links with relative links in sysroot ????
 wget https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-relativelinks.py -P $WORKINGDIR
 chmod +x sysroot-relativelinks.py
-#./sysroot-relativelinks.py sysroot
 
 
 #tar xf qt-everywhere-src-5.14.1.tar.xz
@@ -69,21 +74,34 @@ chmod +x sysroot-relativelinks.py
 
 
 
+# create sysroot directory
+echo -e "\e[1;32mcreate sysroot directory....\e[0m" 
+mkdir -p $WORKINGDIR/sysroot/{opt,usr}
+
+echo -e "\e[1;32mcreate build directory....\e[0m" 
+mkdir -p $WORKINGDIR/build
+
+
+echo -e "\e[1;32mget pi libs....\e[0m" 
+rsync -avz $PIUSER@$PINAME:/lib sysroot
+rsync -avz $PIUSER@$PINAME:/usr/include sysroot/usr
+rsync -avz $PIUSER@$PINAME:/usr/lib sysroot/usr
+rsync -avz $PIUSER@$PINAME:/opt/vc sysroot/opt
+
+
+echo -e "\e[1;32madjust symlinks to be relative....\e[0m" 
+$WORKINGDIR/sysroot-relativelinks.py $WORKINGDIR/sysroot
 
 
 
-echo -e "\e[1;32mget mkspecs configuration files....\e[0m" 
-git clone https://github.com/oniongarlic/qt-raspberrypi-configuration.git $gpsFolder/qt-raspberrypi-configuration
-# FIX VERSION !!!
-#cd qt-raspberrypi-configuration && make install DESTDIR=$gpsFolder/qt-everywhere-src-5.15.0
-make -C $gpsFolder/qt-raspberrypi-configuration install DESTDIR=$gpsFolder/qt-everywhere-src-5.15.0
 
 
-apt update
-apt install build-essential libfontconfig1-dev libdbus-1-dev libfreetype6-dev libicu-dev libinput-dev libxkbcommon-dev libsqlite3-dev libssl-dev libpng-dev libjpeg-dev libglib2.0-dev libraspberrypi-dev -y
 
 
-echo -e "\e[1;32mmake build dir....\e[0m" 
+# geht das ????
+echo -e "\e[1;32mdeploy qt to the pi....\e[0m" 
+rsync -avz $WORKINGDIR/build $PIUSER@$PINAME:/usr/local/qt5 
 
-mkdir $gpsFolder/gt-raspberrypi-configuration/build 
-#cd build
+
+
+
