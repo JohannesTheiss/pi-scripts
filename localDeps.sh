@@ -65,7 +65,6 @@ done
 
 
 
-
 ## ?? braucht man das???
 #tar xf qt-everywhere-src-5.14.1.tar.xz
 #cp -R qt-everywhere-src-5.14.1/qtbase/mkspecs/linux-arm-gnueabi-g++ qt-everywhere-src-5.14.1/qtbase/mkspecs/linux-arm-gnueabihf-g++
@@ -104,50 +103,11 @@ $WORKINGDIR/sysroot-relativelinks.py $WORKINGDIR/sysroot
 
 
 
-
 ##### BUILD QT ######
 echo -e "\e[1;32mcreate build directory....\e[0m" 
 mkdir -p $WORKINGDIR/build
 
-./configure -release -opengl es2 -device <rpi-version> \
-            -device-option \
-            CROSS_COMPILE=~/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf- \
-            -sysroot ~/raspi/sysroot -opensource -confirm-license -make libs \
-            -prefix /usr/local/qt5pi -extprefix ~/raspi/qt5pi -hostprefix ~/raspi/qt5 -v
-
-
-./configure -release -opengl es2 -device linux-rasp-pi4-v3d-g++ \
-            -device-option \
-            CROSS_COMPILE=~/$build_dir/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf- \
-            -sysroot ~/$build_dir/sysroot -opensource -confirm-license -make libs \
-            -prefix /usr/local/qt5pi -extprefix ~/$build_dir/qt5pi -hostprefix ~/$build_dir/qt5 -v
-
-
-# may best
-./configure -release -opengl es2  -eglfs -device linux-rasp-pi4-v3d-g++ \
-            -device-option \
-            CROSS_COMPILE=/opt/RaspberryQt/tools/rpi-gcc-8.3.0/bin/arm-linux-gnueabihf- \
-            -sysroot /opt/RaspberryQt/sysroot -prefix /usr/local/RaspberryQt 
-            -opensource -confirm-license -skip qtscript -skip qtwayland 
-            -skip qtwebengine -nomake tests -nomake examples -make libs 
-            -pkg-config -no-use-gold-linker -v -recheck
-
-
-./configure -release -opengl es2 -device linux-rasp-pi-g++ -device-option \
-            CROSS_COMPILE=~/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf- 
-            -sysroot ~/raspi/sysroot -opensource -confirm-license -skip qtwayland 
-            -skip qtlocation -skip qtscript -make libs -prefix /usr/local/qt5pi 
-            -extprefix ~/raspi/qt5pi -hostprefix ~/raspi/qt5 -no-use-gold-linker -v -no-gbm
-
-./configure -opengl es2 -device linux-rasp-pi3-g++ -device-option \
-            CROSS_COMPILE=arm-linux-gnueabihf- -sysroot /opt/raspi/sysroot 
-            -prefix /usr/local/qt5pi -opensource -confirm-license -plugin-sql-mysql 
-            MYSQL_PREFIX=/opt/local/mysql-rpi-src -recheck-all -skip qtwebengine 
-            -skip qtscript -make libs -no-use-gold-linker -v-all
-
-
-# ./configure --help !!!
-##  -release <-> -debug
+echo -e "\e[1;32mbuild qt....\e[0m" 
 $SOURCEDIR/qtbase-everywhere-src-5.15.0/configure -release -eglfs -opengl es2 \
     -device linux-rasp-pi3-g++ -device-option CROSS_COMPILE=$WORKINGDIR/tools/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf- \
     -sysroot $WORKINGDIR/sysroot -opensource -confirm-license -make libs \
@@ -155,6 +115,8 @@ $SOURCEDIR/qtbase-everywhere-src-5.15.0/configure -release -eglfs -opengl es2 \
     -pkg-config -no-use-gold-linker -v 
 
 
+# ./configure --help !!!
+##  -release <-> -debug
 # -recheck-all
 # -no-gbm
 # -prefix /opt/qt5 (local build of configure)
@@ -163,19 +125,14 @@ $SOURCEDIR/qtbase-everywhere-src-5.15.0/configure -release -eglfs -opengl es2 \
 # MYSQL_PREFIX=/opt/local/mysql-rpi-src -recheck-all -skip qtwebengine 
 # wo ist die toolchain ??
 
+echo -e "\e[1;32mmake with $CORES cores....\e[0m" 
 make -j$CORES
 make install
 
 
-## für wayland
-#framebuffer_depth=32
-#gpu_mem=256
-#dtoverlay=vc4-kms-v3d
 
 # geht das ????
 echo -e "\e[1;32mdeploy qt to the pi....\e[0m" 
 # and deploy new files
 rsync -avz $WORKINGDIR/build $PIUSER@$PINAME:/usr/local/qt5 
-
-
 
