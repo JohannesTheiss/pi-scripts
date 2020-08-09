@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# 1. login as pi
+# 2. sudo adduser admin
+# 3. sudo usermod -aG root admin ?? hat nix gemacht
+# 4. sudo adduser admin sudo
+# 5. vi /etc/ssh/sshd_config
+# 6. added: AllowUsers admin
+# echo "AllowUsers admin" >> /etc/ssh/sshd_config
+
+# ??
+# add pi to root group
+# sudo usermod -aG root pi
+
+
 #USERNAME="admin"
 HOSTNAME="gpslogbook"
 LOCALE=de_DE.UTF-8
@@ -7,8 +20,8 @@ LAYOUT=de
 WIFICOUNTRY=DE
 #DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-# add pi to root group
-# sudo usermod -aG root pi
+
+
 
 # enable development sources 
 echo "deb-src http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi" >> /etc/apt/sources.list
