@@ -24,9 +24,11 @@ WIFICOUNTRY=DE
 
 
 # enable development sources 
+echo -e "\e[1;32menable development sources....\e[0m" 
 echo "deb-src http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi" >> /etc/apt/sources.list
 
 #### updates #### 
+echo -e "\e[1;32mmake updates...\e[0m" 
 apt update
 apt upgrade -y
 # apt dist-upgrade -y
@@ -36,15 +38,19 @@ apt full-upgrade -y
 # set new password
 
 # set hostname
+echo -e "\e[1;32mset hostname....\e[0m" 
 raspi-config nonint do_hostname ${HOSTNAME} 
 
 # set locale
+echo -e "\e[1;32mset locale....\e[0m" 
 raspi-config nonint do_change_locale ${LOCALE}
 
 # keyboard layout
+echo -e "\e[1;32mset keyboard layout....\e[0m" 
 raspi-config nonint do_configure_keyboard ${LAYOUT}
 
 # set wifi country 
+echo -e "\e[1;32mset wifi country....\e[0m" 
 raspi-config nonint do_wifi_country ${WIFICOUNTRY}
 
 #### reduce energy consumption #### 
@@ -57,6 +63,7 @@ raspi-config nonint do_wifi_country ${WIFICOUNTRY}
 # add to /boot/config.txt
 
 # disable bluetooth
+echo -e "\e[1;32mdisable bluetooth....\e[0m" 
 systemctl disable hciuart.service
 systemctl disable bluealsa.service
 systemctl disable bluetooth.service
@@ -73,6 +80,7 @@ systemctl disable bluetooth.service
 
 
 # add to config.txt
+echo -e "\e[1;32madd to config.txt....\e[0m" 
 cat << LINES >> /boot/config.txt
 # disable bluetooth
 dtoverlay=disable-bt
@@ -83,6 +91,7 @@ LINES
 
 
 # expand filesystem
+echo -e "\e[1;32mexpand filesystem....\e[0m" 
 canExpand=$(raspi-config nonint get_can_expand)
 if [ $canExpand -ne 0 ]
 then

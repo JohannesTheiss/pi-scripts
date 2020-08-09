@@ -1,10 +1,11 @@
 #!/bin/bash
 
+# . ist ein repo also nicht rsyncen
 # usage: ./sync.sh <fromPath> <toPath>
 
-USERNAME="pi"
+USERNAME="admin"
 #HOSTNAME="joker-pi"
-HOSTNAME="192.168.2.113"
+HOSTNAME="192.168.2.120"
 #TARGET=/home/${USERNAME}/scripts/
 
 #rsync -avhe ssh --delete . ${USERNAME}@${HOSTNAME}:$TARGET
