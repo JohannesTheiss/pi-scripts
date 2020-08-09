@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WORKINGDIR=/home/johannes/fh/GPS_Logbook/raspi-qt
-SOURCEDIR=/home/johannes/fh/GPS_Logbook/raspi-qt/qt-src
+SOURCEDIR=$WORKINGDIR/qt-src
 
 # ssh-key stuff ....
 
@@ -34,7 +34,7 @@ hashes=("6be4d7ae4cd0d75c50b452cc05117009")
 for i in ${!modules[@]}; do
     # download
     echo -e "\e[1;32mdownload ${modules[$i]}....\e[0m" 
-    wget -N https://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/${modules[$i]} -P $WORKINGDIR
+    wget -N https://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/${modules[$i]} -P $SOURCEDIR
 
     # check hash
     echo -e "\e[1;32mcheck archive MD5 hash of ${modules[$i]}....\e[0m" 
@@ -48,6 +48,10 @@ for i in ${!modules[@]}; do
         echo "$check != $md5Hack"
         exit 1
     fi
+
+    # un-tar the source
+    echo -e "\e[1;32mun-tar ${modules[$i]}....\e[0m" 
+    tar -vxf $SOURCEDIR/${modules[$i]} -C $SOURCEDIR/${modules[$i]}
 done
 
 
@@ -58,6 +62,7 @@ wget https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-r
 chmod +x sysroot-relativelinks.py
 #./sysroot-relativelinks.py sysroot
 
+
 #tar xf qt-everywhere-src-5.14.1.tar.xz
 #cp -R qt-everywhere-src-5.14.1/qtbase/mkspecs/linux-arm-gnueabi-g++ qt-everywhere-src-5.14.1/qtbase/mkspecs/linux-arm-gnueabihf-g++
 #sed -i -e 's/arm-linux-gnueabi-/arm-linux-gnueabihf-/g' qt-everywhere-src-5.14.1/qtbase/mkspecs/linux-arm-gnueabihf-g++/qmake.conf
@@ -66,11 +71,6 @@ chmod +x sysroot-relativelinks.py
 
 
 
-
-
-### un-tar the source
-echo -e "\e[1;32mun-tar the source....\e[0m" 
-tar -vxf $gpsFolder/$sourceName -C $gpsFolder
 
 echo -e "\e[1;32mget mkspecs configuration files....\e[0m" 
 git clone https://github.com/oniongarlic/qt-raspberrypi-configuration.git $gpsFolder/qt-raspberrypi-configuration
