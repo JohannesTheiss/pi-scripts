@@ -10,7 +10,7 @@ PINAME="192.168.2.120"
 TARGET_QT_DIR=/usr/local/qt5
 
 # number of cores you like to use for the complication.
-CORES=4
+CORES=2
 
 # ssh-key stuff ....
 
@@ -34,6 +34,7 @@ echo -e "\e[1;32mGet Qt 5.15....\e[0m"
 # Modules
 modules=("qtbase-everywhere-src-5.15.0.tar.xz")
 hashes=("6be4d7ae4cd0d75c50b452cc05117009")
+
 
 # single (all in one)
 #wget -N https://download.qt.io/official_releases/qt/5.15/5.15.0/single/${sourceName} -P $WORKINGDIR
@@ -101,8 +102,13 @@ mkdir -p $WORKINGDIR/tools/build-tools
 wget https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.tar.xz \
         -P $WORKINGDIR/tools
 
+# un tar toolchain
+mkdir $WORKINGDIR/tools/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf
+tar -vxf $WORKINGDIR/tools/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.tar.xz \
+    -C $WORKINGDIR/tools/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf
 
 
+### SYMLINK-SCRIPT ###
 # get symlink-script from https://github.com/Kukkimonsuta/rpi-buildqt
 # to replace symbolic links with relative links in sysroot ????
 wget https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-relativelinks.py -P $WORKINGDIR
@@ -117,7 +123,7 @@ echo -e "\e[1;32mcreate build directory....\e[0m"
 mkdir -p $WORKINGDIR/build
 
 echo -e "\e[1;32mbuild qt....\e[0m" 
-$SOURCEDIR/qtbase-everywhere-src-5.15.0/configure -release -eglfs -opengl es2 \
+$SOURCEDIR/qtbase/qtbase-everywhere-src-5.15.0/configure -release -eglfs -opengl es2 \
     -device linux-rasp-pi3-g++ -device-option CROSS_COMPILE=$WORKINGDIR/tools/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf- \
     -sysroot $WORKINGDIR/sysroot -opensource -confirm-license -make libs \
     -prefix $TARGET_QT_DIR -extprefix $WORKINGDIR/sysroot/qt5 -hostprefix $WORKINGDIR/tools/build-tools \
