@@ -2,9 +2,12 @@
 
 #### call this script from build dir
 
-WORKINGDIR=/home/johannes/Schreibtisch/raspi-qt
+WORKINGDIR=/home/johannes/fh/GPS_Logbook/Pi/raspi-qt
 SOURCEDIR=$WORKINGDIR/qt-src
 TARGET_QT_DIR=/usr/local/qt5
+
+# make target dir
+mkdir $TARGET_QT_DIR
 
 PIUSER="pi"
 #PINAME="gpslogbook"

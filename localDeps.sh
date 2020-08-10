@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WORKINGDIR=/home/johannes/Schreibtisch/raspi-qt
+WORKINGDIR=/home/johannes/fh/GPS_Logbook/Pi/raspi-qt
 SOURCEDIR=$WORKINGDIR/qt-src
 
 PIUSER="pi"
