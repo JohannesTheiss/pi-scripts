@@ -99,7 +99,7 @@ rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" $PIUSER@$PINAME:/op
 echo -e "\e[1;32mcreate tools directory....\e[0m" 
 mkdir -p $WORKINGDIR/tools/build-tools
 # download toolchain
-wget https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.tar.xz \
+wget -N https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.tar.xz \
         -P $WORKINGDIR/tools
 
 # un tar toolchain
@@ -111,7 +111,7 @@ tar -vxf $WORKINGDIR/tools/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.t
 ### SYMLINK-SCRIPT ###
 # get symlink-script from https://github.com/Kukkimonsuta/rpi-buildqt
 # to replace symbolic links with relative links in sysroot ????
-wget https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-relativelinks.py -P $WORKINGDIR
+wget -N https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-relativelinks.py -P $WORKINGDIR
 chmod +x $WORKINGDIR/sysroot-relativelinks.py
 echo -e "\e[1;32madjust symlinks to be relative....\e[0m" 
 $WORKINGDIR/sysroot-relativelinks.py $WORKINGDIR/sysroot
