@@ -61,6 +61,7 @@ for i in ${!modules[@]}; do
     # un-tar the source
     echo -e "\e[1;32mun-tar ${modules[$i]}....\e[0m" 
     folderName=${modules[$i]%%-*}
+    mkdir $SOURCEDIR/$folderName
     tar -vxf $SOURCEDIR/${modules[$i]} -C $SOURCEDIR/$folderName
 done
 
