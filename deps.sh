@@ -59,8 +59,9 @@ chown -R $USERNAME:$USERNAME /usr/local/qt5
 
 
 # install X-server
-#apt-get Install xserver-xorg
-#apt-get Install xterm
+# apt install xorg -> startx, xinit
+#apt install xserver-xorg
+#apt install xterm
 
 
 

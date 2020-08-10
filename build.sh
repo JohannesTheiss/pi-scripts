@@ -7,7 +7,7 @@ SOURCEDIR=$WORKINGDIR/qt-src
 TARGET_QT_DIR=/usr/local/qt5
 
 # make target dir
-mkdir $TARGET_QT_DIR
+$mkdir $TARGET_QT_DIR
 
 PIUSER="pi"
 #PINAME="gpslogbook"
@@ -34,13 +34,13 @@ $SOURCEDIR/qtbase/qtbase-everywhere-src-5.15.0/configure -release -eglfs -opengl
 # MYSQL_PREFIX=/opt/local/mysql-rpi-src -recheck-all -skip qtwebengine 
 # wo ist die toolchain ??
 
-echo -e "\e[1;32mmake with $CORES cores....\e[0m" 
-make -j$CORES
-make install
+#echo -e "\e[1;32mmake with $CORES cores....\e[0m" 
+#make -j$CORES
+#make install
 
 
 # geht das ????
-echo -e "\e[1;32mdeploy qt to the pi....\e[0m" 
+#echo -e "\e[1;32mdeploy qt to the pi....\e[0m" 
 # and deploy new files
 #rsync -avz $WORKINGDIR/build $PIUSER@$PINAME:/usr/local/qt5 
-rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" $WORKINGDIR/build $PIUSER@$PINAME:/usr/local/qt5 
+#rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" $WORKINGDIR/build $PIUSER@$PINAME:/usr/local/qt5 
