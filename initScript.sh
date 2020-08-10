@@ -8,6 +8,8 @@
 # 6. added: AllowUsers admin
 # echo "AllowUsers admin" >> /etc/ssh/sshd_config
 
+# sudo sshd -t # Test the sshd_config 
+
 # ??
 # add pi to root group
 # sudo usermod -aG root pi
@@ -87,6 +89,7 @@ cat << LINES >> /boot/config.txt
 dtoverlay=disable-bt
 # disable wifi (only in dev)
 dtoverlay=disable-wifi
+disable_splash=1
 LINES
 
 

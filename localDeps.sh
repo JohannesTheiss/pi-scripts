@@ -3,7 +3,7 @@
 WORKINGDIR=/home/johannes/Schreibtisch/raspi-qt
 SOURCEDIR=$WORKINGDIR/qt-src
 
-PIUSER="admin"
+PIUSER="pi"
 PINAME="gpslogbook"
 
 TARGET_QT_DIR=/usr/local/qt5

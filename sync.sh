@@ -3,7 +3,7 @@
 # . ist ein repo also nicht rsyncen
 # usage: ./sync.sh <fromPath> <toPath>
 
-USERNAME="admin"
+USERNAME="pi"
 #HOSTNAME="joker-pi"
 HOSTNAME="192.168.2.120"
 #TARGET=/home/${USERNAME}/scripts/

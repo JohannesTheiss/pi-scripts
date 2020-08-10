@@ -2,7 +2,7 @@
 
 # $USER
 USERNAME="pi"
-QTVERSION="5.15"
+#QTVERSION="5.15"
 
 ###### ONLY DEV ######
 ### setup VIM
@@ -17,7 +17,7 @@ cp /home/${USERNAME}/Documents/dotfiles/vimrc /home/${USERNAME}/.vimrc
 echo "alias v=\"vim\"" >> /home/${USERNAME}/.bashrc
 
 # install pinout tool
-# sudo apt install python3-gpiozero
+apt install python3-gpiozero -y
 
 
 
@@ -32,8 +32,8 @@ mkdir $gpsFolder
 
 echo -e "\e[1;32minstall qt-dependencies....\e[0m" 
 #apt install qt5-default -y ???
-apt build-dep qt5-qmake
-apt build-dep libqt5gui5
+apt build-dep qt5-qmake -y
+apt build-dep libqt5gui5 -y
 
 # optional
 #apt build-dep libqt5webengine-data
@@ -43,7 +43,7 @@ apt build-dep libqt5gui5
 
 
 # gdbserver for remote debugging
-apt install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 gdbserver
+apt install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 gdbserver -y
 
 
 ## Add pi user to render group ????
@@ -66,5 +66,5 @@ chown -R $USERNAME:$USERNAME /usr/local/qt5
 
 # clean up
 echo -e "\e[1;32mclean up....\e[0m" 
-apt clean
-apt autoremove
+apt clean -y
+apt autoremove -y
