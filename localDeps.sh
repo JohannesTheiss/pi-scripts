@@ -81,10 +81,16 @@ mkdir -p $WORKINGDIR/sysroot/{opt,usr,qt5}
 
 # get libs from pi
 echo -e "\e[1;32mget pi libs....\e[0m" 
-rsync -avz $PIUSER@$PINAME:/lib sysroot
-rsync -avz $PIUSER@$PINAME:/usr/include sysroot/usr
-rsync -avz $PIUSER@$PINAME:/usr/lib sysroot/usr
-rsync -avz $PIUSER@$PINAME:/opt/vc sysroot/opt
+sysrootDir=$WORKINGDIR/sysroot
+rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" $PIUSER@$PINAME:/lib $sysrootDir
+rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" $PIUSER@$PINAME:/usr/include $sysrootDir/usr
+rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" $PIUSER@$PINAME:/usr/lib $sysrootDir/usr
+rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" $PIUSER@$PINAME:/opt/vc $sysrootDir/opt
+
+#rsync -avz $PIUSER@$PINAME:/lib sysroot
+#rsync -avz $PIUSER@$PINAME:/usr/include sysroot/usr
+#rsync -avz $PIUSER@$PINAME:/usr/lib sysroot/usr
+#rsync -avz $PIUSER@$PINAME:/opt/vc sysroot/opt
 
 
 
