@@ -103,10 +103,9 @@ wget -N https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-l
         -P $WORKINGDIR/tools
 
 # un tar toolchain
-mkdir $WORKINGDIR/tools/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf
+mkdir $WORKINGDIR/tools/gcc-toolchain
 tar -vxf $WORKINGDIR/tools/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.tar.xz \
-    -C $WORKINGDIR/tools/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf
-
+    -C $WORKINGDIR/tools/gcc-toolchain
 
 ### SYMLINK-SCRIPT ###
 # get symlink-script from https://github.com/Kukkimonsuta/rpi-buildqt
@@ -124,7 +123,7 @@ mkdir -p $WORKINGDIR/build
 
 echo -e "\e[1;32mbuild qt....\e[0m" 
 $SOURCEDIR/qtbase/qtbase-everywhere-src-5.15.0/configure -release -eglfs -opengl es2 \
-    -device linux-rasp-pi3-g++ -device-option CROSS_COMPILE=$WORKINGDIR/tools/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf- \
+    -device linux-rasp-pi3-g++ -device-option CROSS_COMPILE=$WORKINGDIR/tools/gcc-toolchain/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf- \
     -sysroot $WORKINGDIR/sysroot -opensource -confirm-license -make libs \
     -prefix $TARGET_QT_DIR -extprefix $WORKINGDIR/sysroot/qt5 -hostprefix $WORKINGDIR/tools/build-tools \
     -pkg-config -no-use-gold-linker -v 
