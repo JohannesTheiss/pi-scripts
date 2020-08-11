@@ -8,11 +8,12 @@ TARGET_QT_DIR=/usr/local/qt5
 
 # 1. C++17
 toolchain1=$WORKINGDIR/tools/gcc-toolchain/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+
 # 2. work C++11 
-toolchain2=$WORKINGDIR/tools/rasp-toolchain/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-
+#toolchain2=$WORKINGDIR/tools/rasp-toolchain/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-
 
 # make target dir
-$mkdir $TARGET_QT_DIR
+# mkdir $TARGET_QT_DIR
 
 PIUSER="pi"
 #PINAME="gpslogbook"

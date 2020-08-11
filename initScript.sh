@@ -16,7 +16,7 @@
 
 
 #USERNAME="admin"
-HOSTNAME="gpslogbook"
+HOSTNAME="logbook"
 LOCALE=de_DE.UTF-8
 LAYOUT=de
 WIFICOUNTRY=DE

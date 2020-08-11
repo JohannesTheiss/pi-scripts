@@ -2,7 +2,6 @@
 
 # $USER
 USERNAME="pi"
-#QTVERSION="5.15"
 
 ###### ONLY DEV ######
 ### setup VIM
@@ -52,14 +51,14 @@ apt install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xiner
 
 # create qt folder
 echo -e "\e[1;32mcreate qt-directory....\e[0m" 
-#apt install qt5-default -y ???
 mkdir /usr/local/qt5
 chown -R $USERNAME:$USERNAME /usr/local/qt5
 
 
 
 # install X-server
-# apt install xorg -> startx, xinit
+# xorg to get: startx, xinit
+apt install xorg -y
 #apt install xserver-xorg
 #apt install xterm
 
