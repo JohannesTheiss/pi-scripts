@@ -90,6 +90,8 @@ dtoverlay=disable-bt
 # disable wifi (only in dev)
 dtoverlay=disable-wifi
 disable_splash=1
+# use fullscreen
+disable_overscan=1
 LINES
 
 
