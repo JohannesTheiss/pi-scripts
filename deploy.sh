@@ -1,8 +1,7 @@
 #!/bin/bash
 
 ### call this script from your qt-project-folder ### 
-
-BUILDDIR=/home/johannes/fh/GPS_Logbook/Pi/raspi-qt/build
+BUILDDIR=/run/media/johannes/Alles/fh/GPS_Logbook/Pi/raspi-qt/build
 EXECNAME="qopenglwidget"
 PIUSER="pi"
 PINAME="logbook"

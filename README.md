@@ -92,9 +92,19 @@ $ make -j<number of cores>
 $ make install
 ```
 
+1. deploy Qt-Build
+```
+$ rsync -avze ssh /path/to/build pi@<RPI-IP>:/usr/local/qt5/
+```
 
+1. deploy your project
+```
+$ cd /path/to/project
+$ /path/to/deploy.sh  
+```
 
-
-
-
-
+#### on the pi 
+1. run your qt app
+```
+$ sudo startx /path/to/exec
+```
