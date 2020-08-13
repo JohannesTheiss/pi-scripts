@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # $USER
-USERNAME="pi"
+# USERNAME="pi"
 
 ###### ONLY DEV ######
 ### setup VIM
@@ -9,16 +9,14 @@ USERNAME="pi"
 echo -e "\e[1;32minstall Vim....\e[0m" 
 apt install vim -y
 # get my dotfils
-git clone https://github.com/JohannesTheiss/dotfiles /home/${USERNAME}/Documents/dotfiles
-cp /home/${USERNAME}/Documents/dotfiles/vimrc /home/${USERNAME}/.vimrc
+git clone https://github.com/JohannesTheiss/dotfiles /home/$USER/Documents/dotfiles
+cp /home/$USER/Documents/dotfiles/vimrc /home/$USER/.vimrc
 
 # set vim alias to bashrc
-echo "alias v=\"vim\"" >> /home/${USERNAME}/.bashrc
+echo "alias v=\"vim\"" >> /home/$USER/.bashrc
 
 # install pinout tool
-apt install python3-gpiozero -y
-
-
+# apt install python3-gpiozero -y
 
 
 #### make GPS-Logbook folder ####
@@ -52,16 +50,13 @@ apt install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xiner
 # create qt folder
 echo -e "\e[1;32mcreate qt-directory....\e[0m" 
 mkdir /usr/local/qt5
-chown -R $USERNAME:$USERNAME /usr/local/qt5
+chown -R $USER:$USER/usr/local/qt5
 
 
 
 # install X-server
 # xorg to get: startx, xinit
 apt install xorg -y
-#apt install xserver-xorg
-#apt install xterm
-
 
 
 # clean up
