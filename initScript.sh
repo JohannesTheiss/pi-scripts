@@ -9,9 +9,9 @@
 
 #USERNAME="admin"
 HOSTNAME="logbook"
-LOCALE=de_DE.UTF-8
-LAYOUT=de
-WIFICOUNTRY=DE
+#LOCALE="de_DE.UTF-8"
+#LAYOUT="de"
+WIFICOUNTRY="DE"
 #DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 
@@ -37,12 +37,12 @@ raspi-config nonint do_hostname ${HOSTNAME}
 
 # set locale
 echo -e "\e[1;32mset locale....\e[0m" 
-raspi-config nonint do_change_locale ${LOCALE}
+# raspi-config nonint do_change_locale ${LOCALE}
 
 # keyboard layout
 echo -e "\e[1;32mset keyboard layout....\e[0m" 
 # error on tty (dead_belowmacron)
-raspi-config nonint do_configure_keyboard ${LAYOUT} 
+# raspi-config nonint do_configure_keyboard ${LAYOUT} 
 
 # set wifi country 
 echo -e "\e[1;32mset wifi country....\e[0m" 

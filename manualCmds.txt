@@ -9,17 +9,42 @@
 
 
 1. Change pw of pi user:
+   passwd 
+
+
+2. enable ssh-keys
+    ssh-copy-id pi@192.168.2.117
+
+
+3. run initScript.sh
+
+4. check country code
+    sudo cat /etc/wpa_supplicant/wpa_supplicant.conf
+    - country should be "DE"
 
 
 
+4. Set wifi up:
+    - enable wifi
+        - rfkill list 
+        - unblock wifi (only soft bocked)
+            sudo rfkill unblock wifi
 
-2. Set wifi up:
-    - list wifi: sudo iwlist wlan0 scan 
-    - encrypt password: wpa_passphrase "SSID"
-    - add to /etc/wpa_supplicant/wpa_supplicant.conf: 
-        network={
-          ssid="testing"
-          psk=131e1e221f6e06e3911a2d11ff2fac9182665c004de85300f9cac208a6a80531
-        }
-    - reconfigure the interface: wpa_cli -i wlan0 reconfigure
-    - check your ip: ifconfig wlan0
+    - list wifi: 
+        sudo iwlist wlan0 scan 
+
+    - encrypt password: 
+        sudo su
+        wpa_passphrase "SSID" PASSWORD >> /etc/wpa_supplicant/wpa_supplicant.conf
+
+    - delete plain text of password
+        sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
+ 
+    - reconfigure the interface: 
+        wpa_cli -i wlan0 reconfigure
+
+    - reboot
+        sudo reboot
+
+    - check your ip: 
+        ip a 
