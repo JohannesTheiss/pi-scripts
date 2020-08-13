@@ -1,10 +1,14 @@
 #!/bin/bash
 
-#### call this script from build dir
+### call this script from your build dir ### 
 
+### CHANGE THESE SETTINGS IF NEEDED ###
 WORKINGDIR=/home/johannes/fh/GPS_Logbook/Pi/raspi-qt
 SOURCEDIR=$WORKINGDIR/qt-src
 TARGET_QT_DIR=/usr/local/qt5
+PIUSER="pi"
+#PINAME="gpslogbook"
+PINAME="192.168.2.120"
 
 # 1. C++17
 toolchain1=$WORKINGDIR/tools/gcc-toolchain/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
@@ -12,14 +16,7 @@ toolchain1=$WORKINGDIR/tools/gcc-toolchain/gcc-linaro-7.5.0-2019.12-x86_64_arm-l
 # 2. work C++11 
 #toolchain2=$WORKINGDIR/tools/rasp-toolchain/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-
 
-# make target dir
-# mkdir $TARGET_QT_DIR
-
-PIUSER="pi"
-#PINAME="gpslogbook"
-PINAME="192.168.2.120"
-
-CORES=7
+# CORES=7
 
 ##### BUILD QT ######
 echo -e "\e[1;32mbuild qt....\e[0m" 
@@ -42,6 +39,10 @@ $SOURCEDIR/qtbase-everywhere-src-5.13.1/configure -release -eglfs -opengl es2 \
 #echo -e "\e[1;32mmake with $CORES cores....\e[0m" 
 #make -j$CORES
 #make install
+
+echo -e "\e[1;32mrun: make -j<number of cores>\e[0m" 
+echo -e "\e[1;32mrun: make install\e[0m" 
+
 
 
 # geht das ????

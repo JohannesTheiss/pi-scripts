@@ -9,24 +9,20 @@
 echo -e "\e[1;32minstall Vim....\e[0m" 
 apt install vim -y
 # get my dotfils
-git clone https://github.com/JohannesTheiss/dotfiles /home/$USER/Documents/dotfiles
-cp /home/$USER/Documents/dotfiles/vimrc /home/$USER/.vimrc
+#git clone https://github.com/JohannesTheiss/dotfiles /home/$USER/dotfiles
+#cp /home/$USER/dotfiles/vimrc /home/$USER/.vimrc
 
 # set vim alias to bashrc
-echo "alias v=\"vim\"" >> /home/$USER/.bashrc
-
-# install pinout tool
-# apt install python3-gpiozero -y
+# echo "alias v=\"vim\"" >> /home/$USER/.bashrc
 
 
-#### make GPS-Logbook folder ####
+#### make GPS-Logbook folder (deploy folder) ####
 echo -e "\e[1;32mcreate GPS-Logbook directory....\e[0m" 
 gpsFolder=/usr/local/GPS-Logbook
 mkdir $gpsFolder
 
  
 ###### install Qt #######
-
 echo -e "\e[1;32minstall qt-dependencies....\e[0m" 
 #apt install qt5-default -y ???
 apt build-dep qt5-qmake -y

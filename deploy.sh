@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# geht das ????
+BUILDDIR=/home/johannes/fh/GPS_Logbook/Pi/raspi-qt/build
+
+
+
 echo -e "\e[1;32mdeploy qt to the pi....\e[0m" 
 # and deploy new files
 #rsync -avz $WORKINGDIR/build $PIUSER@$PINAME:/usr/local/qt5 

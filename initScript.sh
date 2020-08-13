@@ -1,19 +1,10 @@
 #!/bin/bash
 
-
-
-# ??
-# add pi to root group
-# sudo usermod -aG root pi
-
-
-#USERNAME="admin"
+### CHANGE THESE SETTINGS IF NEEDED ###
 HOSTNAME="logbook"
 #LOCALE="de_DE.UTF-8"
 #LAYOUT="de"
 WIFICOUNTRY="DE"
-#DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
 
 
 
@@ -29,18 +20,16 @@ apt upgrade -y
 apt full-upgrade -y
 
 #### setting ####
-# set new password
-
 # set hostname
 echo -e "\e[1;32mset hostname....\e[0m" 
 raspi-config nonint do_hostname ${HOSTNAME} 
 
 # set locale
-echo -e "\e[1;32mset locale....\e[0m" 
+# echo -e "\e[1;32mset locale....\e[0m" 
 # raspi-config nonint do_change_locale ${LOCALE}
 
 # keyboard layout
-echo -e "\e[1;32mset keyboard layout....\e[0m" 
+# echo -e "\e[1;32mset keyboard layout....\e[0m" 
 # error on tty (dead_belowmacron)
 # raspi-config nonint do_configure_keyboard ${LAYOUT} 
 
@@ -78,13 +67,14 @@ hdmi_ignore_composite=1
 LINES
 
 
+### ssh setting ###
 echo -e "\e[1;32mssh only allow pi-user....\e[0m" 
 echo "AllowUsers pi" >> /etc/ssh/sshd_config
-# sudo sshd -t # Test the sshd_config 
+# sudo sshd -t # test the sshd_config 
 systemctl restart sshd
 
 
-# expand filesystem
+### expand filesystem ###
 echo -e "\e[1;32mexpand filesystem....\e[0m" 
 canExpand=$(raspi-config nonint get_can_expand)
 if [ $canExpand -ne 0 ]
@@ -95,11 +85,12 @@ else
     echo "can't expand filesystem"
 fi
 
-
 # print setting  ... but why
 #vcgencmd get_config int
 #vcgencmd get_config str
 
+# disable raspi-config 
+systemctl disable raspi-config
 
 # reboot
 read -p "reboot? [y/n] " -n 1 -r
