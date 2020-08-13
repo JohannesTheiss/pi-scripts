@@ -6,27 +6,27 @@ you need a raspberry pi with raspberry pi os on it
 
 #### [on the pi]
 1. Change pw of pi user:
-```
-$ passwd 
-```
+    ```
+    $ passwd 
+    ```
 
 2. enable ssh-keys
-```
-$ ssh-copy-id pi@<RPI-IP>
-```
+    ```
+    $ ssh-copy-id pi@<RPI-IP>
+    ```
 
 3. run initScript.sh
-```
-$ sudo ./initScript.sh
-```
+    ```
+    $ sudo ./initScript.sh
+    ```
 
-1. check country code
+4. check country code
     ```
     $ sudo cat /etc/wpa_supplicant/wpa_supplicant.conf
     ```
     1. country should be "DE"
 
-1. Set wifi up:
+5. Set wifi up:
     1. enable wifi
         ```
         $ rfkill list 
@@ -36,74 +36,76 @@ $ sudo ./initScript.sh
         $ sudo rfkill unblock wifi
         ```
 
-    1. list wifi: 
+    2. list wifi: 
         ```
         $ sudo iwlist wlan0 scan 
         ```
 
-    1. encrypt password: 
+    3. encrypt password: 
         ```
         $ sudo su
         $ wpa_passphrase "SSID" PASSWORD >> /etc/wpa_supplicant/wpa_supplicant.conf
         ```
 
-    1. delete plain text of password
+    4. delete plain text of password
         ```
         $ sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
         ```
  
-    1. reconfigure the interface: 
+    5. reconfigure the interface: 
         ```
         $ wpa_cli -i wlan0 reconfigure
         ```
 
-    1. reboot
+    6. reboot
         ```
         $ sudo reboot
         ```
 
-    1. check your ip: 
+    7. check your ip: 
         ```
         $ ip a 
         ```
 
-1. run deps.sh
-```
-$ sudo ./deps.sh
-
-```
+6. run deps.sh
+    ```
+    $ sudo ./deps.sh
+    ```
 
 #### [on the host]
-1. run localDeps.sh
-```
-$ sudo ./localDeps.sh
-```
+7. run localDeps.sh
+    ```
+    $ sudo ./localDeps.sh
+    ```
 
-1. go to your build dir.
-```
-$ cd /path/to/buildDir
-$ sudo /path/to/build.sh
-```
+8. go to your build dir.
+    ```
+    $ cd /path/to/buildDir
+    $ sudo /path/to/build.sh
+    ```
 
-1. make
-```
-$ make -j<number of cores>
-$ make install
-```
+9. make
+    ```
+    $ make -j<number of cores>
+    $ make install
+    ```
 
-1. deploy Qt-Build
-```
-$ rsync -avze ssh /path/to/build pi@<RPI-IP>:/usr/local/qt5/
-```
+10. deploy Qt-Build
+    ```
+    $ rsync -avze ssh /path/to/build pi@<RPI-IP>:/usr/local/qt5/
+    ```
 
-1. deploy your project
-```
-$ cd /path/to/project
-$ /path/to/deploy.sh  
-```
+11. deploy your project
+    ```
+    $ cd /path/to/project
+    $ /path/to/deploy.sh  
+    ```
 
 #### [on the pi]
-1. run your qt app
-```
-$ sudo startx /path/to/exec
-```
+12. run your qt app
+    ```
+    $ sudo startx /path/to/exec
+    ```
+
+
+
