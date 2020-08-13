@@ -1,0 +1,25 @@
+
+???
+# 1. login as pi
+# 2. sudo adduser admin
+# 3. sudo usermod -aG root admin ?? hat nix gemacht
+# 4. sudo adduser admin sudo
+# 5. vi /etc/ssh/sshd_config
+# 6. added: AllowUsers admin
+
+
+1. Change pw of pi user:
+
+
+
+
+2. Set wifi up:
+    - list wifi: sudo iwlist wlan0 scan 
+    - encrypt password: wpa_passphrase "SSID"
+    - add to /etc/wpa_supplicant/wpa_supplicant.conf: 
+        network={
+          ssid="testing"
+          psk=131e1e221f6e06e3911a2d11ff2fac9182665c004de85300f9cac208a6a80531
+        }
+    - reconfigure the interface: wpa_cli -i wlan0 reconfigure
+    - check your ip: ifconfig wlan0

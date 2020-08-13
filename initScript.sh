@@ -1,14 +1,6 @@
 #!/bin/bash
 
-# 1. login as pi
-# 2. sudo adduser admin
-# 3. sudo usermod -aG root admin ?? hat nix gemacht
-# 4. sudo adduser admin sudo
-# 5. vi /etc/ssh/sshd_config
-# 6. added: AllowUsers admin
-# echo "AllowUsers admin" >> /etc/ssh/sshd_config
 
-# sudo sshd -t # Test the sshd_config 
 
 # ??
 # add pi to root group
@@ -56,44 +48,40 @@ raspi-config nonint do_configure_keyboard ${LAYOUT}
 echo -e "\e[1;32mset wifi country....\e[0m" 
 raspi-config nonint do_wifi_country ${WIFICOUNTRY}
 
+
 #### reduce energy consumption #### 
-# disable HDMI 
-# add 
-#disable_splash=1 # disable rainbow splash screen on boot
-#hdmi_blanking=1
-#hdmi_ignore_hotplug=1
-#hdmi_ignore_composite=1
-# add to /boot/config.txt
 
 # disable bluetooth
 echo -e "\e[1;32mdisable bluetooth....\e[0m" 
 systemctl disable hciuart.service
-# systemctl disable bluealsa.service -> does not exist
 systemctl disable bluetooth.service
 
-
-# may set overscan
 
 # Memory split more memory for the GPU
 # RPI 3 b+ -> 1 GP RAM -> max. gpu_mem = 512 MB
 # gpu_mem=16 # min -> add to config.txt
 
-# add deps.sh to autostart
-# wie geht das dann wieder da raus? sed -i -e '$i sh ${DIR}/deps.sh &\n' rc.local
 
-
-# add to config.txt
+# add to /boot/config.txt
 echo -e "\e[1;32madd to config.txt....\e[0m" 
 cat << LINES >> /boot/config.txt
 # disable bluetooth
 dtoverlay=disable-bt
-# disable wifi (only in dev)
-dtoverlay=disable-wifi
+# disable rainbow splash screen on boot
 disable_splash=1
 # use fullscreen
 disable_overscan=1
+# disable HDMI
+hdmi_blanking=1
+hdmi_ignore_hotplug=1
+hdmi_ignore_composite=1
 LINES
 
+
+echo -e "\e[1;32mssh only allow pi-user....\e[0m" 
+echo "AllowUsers pi" >> /etc/ssh/sshd_config
+# sudo sshd -t # Test the sshd_config 
+systemctl restart sshd
 
 
 # expand filesystem
