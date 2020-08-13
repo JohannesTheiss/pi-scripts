@@ -46,7 +46,7 @@ apt install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xiner
 # create qt folder
 echo -e "\e[1;32mcreate qt-directory....\e[0m" 
 mkdir /usr/local/qt5
-chown -R $USER:$USER/usr/local/qt5
+chown -R $USER:$USER /usr/local/qt5
 
 
 
