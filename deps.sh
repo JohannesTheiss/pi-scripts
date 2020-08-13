@@ -39,6 +39,9 @@ apt build-dep libqt5gui5 -y
 apt install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 gdbserver -y
 
 
+apt install qml-module-qtquick-dialogs
+apt install qml-module-qtquick-controls
+
 ## Add pi user to render group ????
 # sudo gpasswd -a pi render
 

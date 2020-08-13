@@ -5,12 +5,12 @@
 ### CHANGE THESE SETTINGS IF NEEDED ###
 WORKINGDIR=/home/johannes/fh/GPS_Logbook/Pi/raspi-qt
 SOURCEDIR=$WORKINGDIR/qt-src
-TARGET_QT_DIR=$WORKINGDIR/qt5
+TARGET_QT_DIR="$WORKINGDIR/qt5"
 PIUSER="pi"
 PINAME="logbook"
 #PINAME="192.168.2.120"
 
-mkdir $TARGET_QT_DIR
+# mkdir $TARGET_QT_DIR
 
 # 1. C++17
 toolchain1=$WORKINGDIR/tools/gcc-toolchain/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
