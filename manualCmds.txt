@@ -27,7 +27,7 @@
 4. Set wifi up:
     - enable wifi
         - rfkill list 
-        - unblock wifi (only soft bocked)
+        - if soft blocked then unblock wifi
             sudo rfkill unblock wifi
 
     - list wifi: 
@@ -43,8 +43,44 @@
     - reconfigure the interface: 
         wpa_cli -i wlan0 reconfigure
 
+    - add to /etc/network/interfaces (muss man nicht??)
+
+cat << LINES >> /etc/network/interfaces 
+auto lo
+iface lo inet loopback
+
+auto eth0
+allow-hotplug eth0
+iface eth0 inet static
+address 192.168.2.187
+netmask 255.255.255.0
+
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet static
+wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+address 192.168.2.188
+netmask 255.255.255.0
+broadcast 192.168.2.255
+gateway 192.168.2.1
+
+iface default inet dhcp
+LINES
+
+
     - reboot
         sudo reboot
 
     - check your ip: 
         ip a 
+
+
+
+
+
+
+
+
+
+
+
