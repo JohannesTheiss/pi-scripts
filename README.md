@@ -1,4 +1,5 @@
 ## Init-Scripts
+setting up a cross-compiling env.
 
 ### Usage
 you need a raspberry pi with raspberry pi os on it
@@ -66,5 +67,34 @@ $ sudo cat /etc/wpa_supplicant/wpa_supplicant.conf
         $ ip a 
 
         ```
+
+1. run deps.sh
+```
+$ sudo ./deps.sh
+
+```
+
+#### on the host 
+1. run localDeps.sh
+```
+$ sudo ./localDeps.sh
+```
+
+1. go to your build dir.
+```
+$ cd /path/to/buildDir
+$ sudo /path/to/build.sh
+```
+
+1. make
+```
+$ make -j<number of cores>
+$ make install
+```
+
+
+
+
+
 
 
