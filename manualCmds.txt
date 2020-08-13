@@ -24,7 +24,7 @@
 
 
 
-4. Set wifi up:
+5. Set wifi up:
     - enable wifi
         - rfkill list 
         - if soft blocked then unblock wifi
@@ -51,11 +51,8 @@
 
 
 
-
-
-
-
-
-
+change /usr/bin/startx
+from: defaultserverargs=""
+to: defaultserverargs="-nocursor"
 
 

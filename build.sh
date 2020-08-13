@@ -22,23 +22,24 @@ toolchain1=$WORKINGDIR/tools/gcc-toolchain/gcc-linaro-7.5.0-2019.12-x86_64_arm-l
 
 ##### BUILD QT ######
 echo -e "\e[1;32mbuild qt....\e[0m" 
-#$SOURCEDIR/qtbase/qtbase-everywhere-src-5.13.1/configure -release -eglfs -opengl es2 \
-#    -device linux-rasp-pi3-g++ -device-option CROSS_COMPILE=$toolchain1 \
-#    -sysroot $WORKINGDIR/sysroot -opensource -confirm-license -make libs \
-#    -prefix $TARGET_QT_DIR -extprefix $WORKINGDIR/sysroot/qt5 -hostprefix $WORKINGDIR/tools/build-tools \
-#    -pkg-config -no-use-gold-linker -v 
-
-$SOURCEDIR/qt-everywhere/qt-everywhere-src-5.13.1/configure -release -eglfs -opengl es2 \
+$SOURCEDIR/qtbase/qtbase-everywhere-src-5.13.1/configure -release -eglfs -opengl es2 \
     -device linux-rasp-pi3-g++ -device-option CROSS_COMPILE=$toolchain1 \
     -sysroot $WORKINGDIR/sysroot -opensource -confirm-license -make libs \
     -prefix $TARGET_QT_DIR -extprefix $WORKINGDIR/sysroot/qt5 -hostprefix $WORKINGDIR/tools/build-tools \
     -pkg-config -no-use-gold-linker -v 
 
 
+#$SOURCEDIR/qt-everywhere/qt-everywhere-src-5.13.1/configure -release -eglfs -opengl es2 \
+#    -device linux-rasp-pi3-g++ -device-option CROSS_COMPILE=$toolchain1 \
+#    -sysroot $WORKINGDIR/sysroot -opensource -confirm-license -make libs \
+#    -prefix $TARGET_QT_DIR -extprefix $WORKINGDIR/sysroot/qt5 -hostprefix $WORKINGDIR/tools/build-tools \
+#    -pkg-config -no-use-gold-linker -v 
+
+
 
 
 # ./configure --help !!!
-##  -release <-> -debug
+#  -release <-> -debug
 # -recheck-all
 # -no-gbm
 # -prefix /opt/qt5 (local build of configure)

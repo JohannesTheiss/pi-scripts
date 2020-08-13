@@ -92,6 +92,8 @@ fi
 # disable raspi-config 
 systemctl disable raspi-config
 
+
+
 # reboot
 read -p "reboot? [y/n] " -n 1 -r
 echo    # (optional) move to a new line
