@@ -1,7 +1,12 @@
 #!/bin/bash
 
-BUILDDIR=/home/johannes/fh/GPS_Logbook/Pi/raspi-qt/build
+### call this script from your qt-project-folder ### 
 
+BUILDDIR=/home/johannes/fh/GPS_Logbook/Pi/raspi-qt/build
+EXECNAME="qopenglwidget"
+PIUSER="pi"
+PINAME="logbook"
+TARGET_PATH=/home/pi
 
 
 echo -e "\e[1;32mdeploy qt to the pi....\e[0m" 
@@ -11,10 +16,16 @@ echo -e "\e[1;32mdeploy qt to the pi....\e[0m"
 
 
 # build example
-
 #cd qtbase/examples/opengl/qopenglwidget
 #~/raspi/qt5/bin/qmake
 #make
 
 #scp qopenglwidget pi@raspberrypi.local:/home/pi
 
+
+echo -e "\e[1;32mbuild qt-project....\e[0m" 
+$BUILDDIR/bin/qmake
+make
+
+echo -e "\e[1;32mcopy qt-project to RPI....\e[0m" 
+scp $EXECNAME $PIUSER@$PINAME:$TARGET_PATH
