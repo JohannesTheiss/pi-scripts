@@ -22,7 +22,7 @@ toolchain1=$WORKINGDIR/tools/gcc-toolchain/gcc-linaro-7.5.0-2019.12-x86_64_arm-l
 
 ##### BUILD QT ######
 echo -e "\e[1;32mbuild qt....\e[0m" 
-$SOURCEDIR/qtbase/qtbase-everywhere-src-5.13.1/configure -release -eglfs -opengl es2 \
+$SOURCEDIR/qtbase/qtbase-everywhere-src-5.13.1/configure -debug -eglfs -opengl es2 \
     -device linux-rasp-pi3-g++ -device-option CROSS_COMPILE=$toolchain1 \
     -sysroot $WORKINGDIR/sysroot -opensource -confirm-license -make libs \
     -extprefix $WORKINGDIR/sysroot/qt5 -hostprefix $WORKINGDIR/tools/build-tools \
