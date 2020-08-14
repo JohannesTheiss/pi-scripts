@@ -1,12 +1,11 @@
 #!/bin/bash
 
 ### call this script from your qt-project-folder ### 
-BUILDDIR=/run/media/johannes/Alles/fh/GPS_Logbook/Pi/raspi-qt/build
-EXECNAME="qopenglwidget"
+PIQMAKE=/run/media/johannes/Alles/fh/GPS_Logbook/Pi/raspi-qt/tools/build-tools/bin/qmake
+EXECNAME="main"
 PIUSER="pi"
 PINAME="logbook"
-TARGET_PATH=/home/pi
-
+TARGET_PATH=/home/pi/qt
 
 echo -e "\e[1;32mdeploy qt to the pi....\e[0m" 
 # and deploy new files
@@ -23,8 +22,9 @@ echo -e "\e[1;32mdeploy qt to the pi....\e[0m"
 
 
 echo -e "\e[1;32mbuild qt-project....\e[0m" 
-$BUILDDIR/bin/qmake
+$PIQMAKE
 make
 
 echo -e "\e[1;32mcopy qt-project to RPI....\e[0m" 
-scp $EXECNAME $PIUSER@$PINAME:$TARGET_PATH
+# scp $DIR $PIUSER@$PINAME:$TARGET_PATH
+rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" . $PIUSER@$PINAME:$TARGET_PATH
