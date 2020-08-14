@@ -5,7 +5,7 @@
 ### CHANGE THESE SETTINGS IF NEEDED ###
 WORKINGDIR=/home/johannes/fh/GPS_Logbook/Pi/raspi-qt
 SOURCEDIR=$WORKINGDIR/qt-src
-TARGET_QT_DIR="$WORKINGDIR/qt5"
+
 PIUSER="pi"
 PINAME="logbook"
 #PINAME="192.168.2.120"
@@ -25,7 +25,7 @@ echo -e "\e[1;32mbuild qt....\e[0m"
 $SOURCEDIR/qtbase/qtbase-everywhere-src-5.13.1/configure -release -eglfs -opengl es2 \
     -device linux-rasp-pi3-g++ -device-option CROSS_COMPILE=$toolchain1 \
     -sysroot $WORKINGDIR/sysroot -opensource -confirm-license -make libs \
-    -prefix $TARGET_QT_DIR -extprefix $WORKINGDIR/sysroot/qt5 -hostprefix $WORKINGDIR/tools/build-tools \
+    -extprefix $WORKINGDIR/sysroot/qt5 -hostprefix $WORKINGDIR/tools/build-tools \
     -pkg-config -no-use-gold-linker -v 
 
 
