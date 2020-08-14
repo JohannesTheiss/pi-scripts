@@ -56,3 +56,11 @@ from: defaultserverargs=""
 to: defaultserverargs="-nocursor"
 
 
+
+
+add submodul:
+- download and un-tar the source package:
+- run pimake (tool/build-tool/bin/qmake) in the source package folder 
+- run make
+- run make install
+
