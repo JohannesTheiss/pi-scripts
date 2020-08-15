@@ -5,7 +5,7 @@ SOURCEDIR=$WORKINGDIR/qt-src
 
 PIUSER="pi"
 #PINAME="logbook"
-PINAME="192.168.2.118"
+PINAME="192.168.2.117"
 
 
 ##### create working directory #####
@@ -19,8 +19,12 @@ mkdir -p $SOURCEDIR
 echo -e "\e[1;32mGet Qt 5.13.1 ....\e[0m" 
 
 # Modules
-modules=("qtbase-everywhere-src-5.13.1.tar.xz" "qtquickcontrols-everywhere-src-5.13.1.tar.xz" "qtdeclarative-everywhere-src-5.13.1.tar.xz")
-hashes=("0a1761145531b74fff5b4d9a80c7b1c2" "9be2dd310791d0870a13fcd40ac18443" "8bc90f2b14a6953091c2cdb7f84a644c")
+modules=("qtbase-everywhere-src-5.13.1.tar.xz" "qtquickcontrols-everywhere-src-5.13.1.tar.xz" 
+         "qtdeclarative-everywhere-src-5.13.1.tar.xz" "qtvirtualkeyboard-everywhere-src-5.13.1.tar.xz"
+         "qtsvg-everywhere-src-5.13.1.tar.xz")
+hashes=("0a1761145531b74fff5b4d9a80c7b1c2" "9be2dd310791d0870a13fcd40ac18443" 
+        "8bc90f2b14a6953091c2cdb7f84a644c" "c0169e7c2eadf540638bfa33bf6bfa8c"
+        "6b60f8fc9467eabf746d0e80407c2fcb")
 
 
 # single (all in one)

@@ -108,5 +108,19 @@ you need a raspberry pi with raspberry pi os on it
     sudo startx /path/to/exec
     ```
 
+### How to add a submodul:
+* download and un-tar the source package:
+    ```
+    wget -N https://download.qt.io/official_releases/qt/5.13/5.13.1/submodules/<SUBMODUL>
+    tar -vxf <SUBMODUL> 
+    ```
+* build the source package folder (pimake := tools/build-tool/bin/qmake):
+    ```
+    cd <SOURCEDIR>
+    pimake
+    make -j6
+    make install
+    ```
+
 
 

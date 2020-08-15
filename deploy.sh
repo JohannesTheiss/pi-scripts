@@ -29,5 +29,5 @@ echo -e "\e[1;32mcopy qt-project to RPI....\e[0m"
 # scp $DIR $PIUSER@$PINAME:$TARGET_PATH
 rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" . $PIUSER@$PINAME:$TARGET_PATH
 
-ssh $PIUSER@$PINAME -X $TARGET_PATH/$EXECNAME
+# ssh $PIUSER@$PINAME -X $TARGET_PATH/$EXECNAME
 
