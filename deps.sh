@@ -38,7 +38,7 @@ apt build-dep libqt5gui5 -y
 # gdbserver for remote debugging
 apt install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 -y
 
-
+# install QtQuick
 apt install qml-module-qtquick-dialogs -y
 apt install qml-module-qtquick-controls -y
 

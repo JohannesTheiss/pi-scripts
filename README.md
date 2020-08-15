@@ -93,7 +93,7 @@ you need a raspberry pi with raspberry pi os on it
 10. deploy Qt-Build
     ```
     cd /path/to/build
-    rsync -avze ssh /path/to/build pi@<RPI-IP>:/usr/local/qt5/
+    rsync -avze ssh . pi@<RPI-IP>:/usr/local/qt5/
     ```
 
 11. deploy your project
