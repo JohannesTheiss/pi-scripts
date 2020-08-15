@@ -39,8 +39,9 @@ apt build-dep libqt5gui5 -y
 apt install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 -y
 
 # install QtQuick
-apt install qml-module-qtquick-dialogs -y
-apt install qml-module-qtquick-controls -y
+#apt install qml-module-qtquick-dialogs -y
+#apt install qml-module-qtquick-controls -y
+apt install qml-module-qtquick* -y
 
 # install virtualkeyboard
 apt install qml-module-qtquick-virtualkeyboard -y
