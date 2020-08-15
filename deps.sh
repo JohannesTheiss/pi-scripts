@@ -42,6 +42,9 @@ apt install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xiner
 apt install qml-module-qtquick-dialogs -y
 apt install qml-module-qtquick-controls -y
 
+# install virtualkeyboard
+apt install qml-module-qtquick-virtualkeyboard -y
+
 ## Add pi user to render group ????
 # sudo gpasswd -a pi render
 
