@@ -95,6 +95,10 @@ you need a raspberry pi with raspberry pi os on it
     cd /path/to/build
     rsync -avze ssh . pi@<RPI-IP>:/usr/local/qt5/
     ```
+    or
+    ```
+    rsync -avz qt5 pi@<RPI-IP>:/usr/local
+    ```
 
 11. deploy your project
     ```

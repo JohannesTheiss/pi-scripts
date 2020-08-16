@@ -19,12 +19,13 @@ mkdir -p $SOURCEDIR
 echo -e "\e[1;32mGet Qt 5.13.1 ....\e[0m" 
 
 # Modules
-modules=("qtbase-everywhere-src-5.13.1.tar.xz" "qtquickcontrols-everywhere-src-5.13.1.tar.xz" 
-         "qtdeclarative-everywhere-src-5.13.1.tar.xz" "qtvirtualkeyboard-everywhere-src-5.13.1.tar.xz"
-         "qtsvg-everywhere-src-5.13.1.tar.xz")
-hashes=("0a1761145531b74fff5b4d9a80c7b1c2" "9be2dd310791d0870a13fcd40ac18443" 
-        "8bc90f2b14a6953091c2cdb7f84a644c" "c0169e7c2eadf540638bfa33bf6bfa8c"
-        "6b60f8fc9467eabf746d0e80407c2fcb")
+#modules=("qtbase-everywhere-src-5.13.1.tar.xz" "qtquickcontrols-everywhere-src-5.13.1.tar.xz" 
+#         "qtdeclarative-everywhere-src-5.13.1.tar.xz" "qtvirtualkeyboard-everywhere-src-5.13.1.tar.xz"
+#         "qtsvg-everywhere-src-5.13.1.tar.xz")
+
+#hashes=("0a1761145531b74fff5b4d9a80c7b1c2" "9be2dd310791d0870a13fcd40ac18443" 
+#        "8bc90f2b14a6953091c2cdb7f84a644c" "c0169e7c2eadf540638bfa33bf6bfa8c"
+#        "6b60f8fc9467eabf746d0e80407c2fcb")
 
 
 # single (all in one)
@@ -33,30 +34,30 @@ hashes=("0a1761145531b74fff5b4d9a80c7b1c2" "9be2dd310791d0870a13fcd40ac18443"
 #tar -vxf $SOURCEDIR/qt-everywhere-src-5.13.1.tar.xz -C $SOURCEDIR/qt-everywhere
 
 # install submodules
-for i in ${!modules[@]}; do
-    # download
-    echo -e "\e[1;32mdownload ${modules[$i]}....\e[0m" 
-    wget -N https://download.qt.io/official_releases/qt/5.13/5.13.1/submodules/${modules[$i]} -P $SOURCEDIR
+#for i in ${!modules[@]}; do
+#    # download
+#    echo -e "\e[1;32mdownload ${modules[$i]}....\e[0m" 
+#    wget -N http://download.qt.io/official_releases/qt/5.13/5.13.1/submodules/${modules[$i]} -P $SOURCEDIR
+#
+#    # check hash
+#    echo -e "\e[1;32mcheck archive MD5 hash of ${modules[$i]}....\e[0m" 
+#    check=$(md5sum $SOURCEDIR/${modules[$i]})
+#    if [[ "$check" == "${hashes[$i]}  $SOURCEDIR/${modules[$i]}" ]]
+#    then
+#        echo -e "\e[1;32mMatch\e[0m" 
+#        echo "$check"
+#    else
+#        echo -e "\e[1;31mno match (Man-in-the-Middle... SHIT)\e[0m" 
+#        echo "$check != $md5Hack"
+#        exit 1
+#    fi
 
-    # check hash
-    echo -e "\e[1;32mcheck archive MD5 hash of ${modules[$i]}....\e[0m" 
-    check=$(md5sum $SOURCEDIR/${modules[$i]})
-    if [[ "$check" == "${hashes[$i]}  $SOURCEDIR/${modules[$i]}" ]]
-    then
-        echo -e "\e[1;32mMatch\e[0m" 
-        echo "$check"
-    else
-        echo -e "\e[1;31mno match (Man-in-the-Middle... SHIT)\e[0m" 
-        echo "$check != $md5Hack"
-        exit 1
-    fi
-
-    # un-tar the source
-    echo -e "\e[1;32mun-tar ${modules[$i]}....\e[0m" 
-    folderName=${modules[$i]%%-*}
-    mkdir $SOURCEDIR/$folderName
-    tar -vxf $SOURCEDIR/${modules[$i]} -C $SOURCEDIR/$folderName
-done
+#    # un-tar the source
+#    echo -e "\e[1;32mun-tar ${modules[$i]}....\e[0m" 
+#    folderName=${modules[$i]%%-*}
+#    mkdir $SOURCEDIR/$folderName
+#    tar -vxf $SOURCEDIR/${modules[$i]} -C $SOURCEDIR/$folderName
+#done
 
 
 

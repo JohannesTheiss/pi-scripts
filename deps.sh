@@ -43,8 +43,13 @@ apt install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xiner
 #apt install qml-module-qtquick-controls -y
 apt install qml-module-qtquick* -y
 
+# apt install qml-module-qtquick2
+apt install qtquickcontrols5-* -y
+
+
 # install virtualkeyboard
 apt install qml-module-qtquick-virtualkeyboard -y
+apt install qtvirtualkeyboard-plugin -y
 
 ## Add pi user to render group ????
 # sudo gpasswd -a pi render
@@ -60,6 +65,9 @@ chown -R $USER:$USER /usr/local/qt5
 # install X-server
 # xorg to get: startx, xinit
 apt install xorg -y
+
+# may add this to the .bashrc
+# export PATH=/usr/local/qt5:/usr/local/qt5/bin:/usr/local/qt5/lib:/usr/local/qt5/plugins:$PATH
 
 
 # clean up
