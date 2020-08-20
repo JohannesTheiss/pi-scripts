@@ -73,7 +73,7 @@ We use the **Raspberry Pi OS (32-bit) Lite**.
     sudo ./deps.sh
     ```
 
-7. disable cursor on touch
+7. disable cursor on touch\
     change in /usr/bin/startx the line with\
     `defaultserverargs=""` to `defaultserverargs="-nocursor"`
     ```
