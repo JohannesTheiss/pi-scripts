@@ -21,11 +21,10 @@ We use the **Raspberry Pi OS (32-bit) Lite**.
     sudo ./initScript.sh
     ```
 
-4. check country code
+4. check country code (should be "DE")
     ```
     sudo cat /etc/wpa_supplicant/wpa_supplicant.conf
     ```
-    1. country should be "DE"
 
 5. Set wifi up:
     1. enable wifi
@@ -70,7 +69,7 @@ We use the **Raspberry Pi OS (32-bit) Lite**.
 
 6. run deps.sh
     ```
-    sudo ./deps.sh
+    sudo ./remoteDeps.sh
     ```
 
 7. disable cursor on touch\

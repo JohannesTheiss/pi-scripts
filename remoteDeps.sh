@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# $USER
-# USERNAME="pi"
 
 ###### ONLY DEV ######
 ### setup VIM
