@@ -1,8 +1,11 @@
 #!/bin/bash
 
+### call this script from wherever you want ### 
+
+
+### CHANGE THESE SETTINGS IF NEEDED ###
 WORKINGDIR=/home/johannes/fh/GPS_Logbook/Pi/raspi-qt
 SOURCEDIR=$WORKINGDIR/qt-src
-
 PIUSER="pi"
 PINAME="logbook"
 
@@ -21,7 +24,6 @@ echo -e "\e[1;32mGet Qt 5.13.1 ....\e[0m"
 # wget -N https://download.qt.io/official_releases/qt/5.13/5.13.1/single/qt-everywhere-src-5.13.1.tar.xz -P $SOURCEDIR
 # mkdir $SOURCEDIR/qt-everywhere
 # tar -vxf $SOURCEDIR/qt-everywhere-src-5.13.1.tar.xz -C $SOURCEDIR/qt-everywhere
-
 
 # Modules
 modules=("qtbase-everywhere-src-5.13.1.tar.xz" "qtquickcontrols-everywhere-src-5.13.1.tar.xz" 
@@ -58,7 +60,6 @@ for i in ${!modules[@]}; do
     tar -vxf $SOURCEDIR/${modules[$i]} -C $SOURCEDIR/$folderName
 done
 
-
 #### create SYSROOT ####
 # create sysroot directory
 echo -e "\e[1;32mcreate sysroot directory....\e[0m" 
@@ -71,8 +72,6 @@ rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" $PIUSER@$PINAME:/li
 rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" $PIUSER@$PINAME:/usr/include $sysrootDir/usr
 rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" $PIUSER@$PINAME:/usr/lib $sysrootDir/usr
 rsync --progress -avz -e "ssh -i /home/johannes/.ssh/id_rsa" $PIUSER@$PINAME:/opt/vc $sysrootDir/opt
-
-
 
 #### install TOOLCHAIN ####
 echo -e "\e[1;32mcreate tools directory....\e[0m" 
