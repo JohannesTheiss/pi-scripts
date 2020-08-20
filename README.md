@@ -1,8 +1,8 @@
 ## Init-Scripts
 setting up a cross-compiling env.
 
-### Usage
-You need a raspberry pi with [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os) on it.\
+### INSTALL
+You need a raspberry pi with Raspberry Pi OS on it.\
 We use the **Raspberry Pi OS (32-bit) Lite**.
 
 #### [on the pi]
@@ -73,6 +73,13 @@ We use the **Raspberry Pi OS (32-bit) Lite**.
     sudo ./deps.sh
     ```
 
+7. disable cursor on touch
+    change in /usr/bin/startx the line with\
+    `defaultserverargs=""` to `defaultserverargs="-nocursor"`
+    ```
+    sudo vim /usr/bin/startx
+    ```
+
 #### [on the host]
 7. run localDeps.sh
     ```
@@ -128,4 +135,31 @@ We use the **Raspberry Pi OS (32-bit) Lite**.
     ```
 
 
+### Run your app:
+* if you use a desktop environment:
+    ```
+    export DISPLAY=:0
+    sudo startx &
+    sudo ./myApp
+    ```
+
+* if you want to use SSH:
+    ```
+    ssh pi@<RPI-IP> -X /path/to/myApp
+    ```
+    or
+    ```
+    ssh pi@<RPI-IP> -X
+    ./myApp
+    ```
+
+* if you DON'T use a desktop environment:
+    ```
+    sudo startx ./myApp
+    ```
+    or
+    ```
+    sudo startx ~/.xinitrc
+    (in .xinitrc: exec /path/to/myApp)
+    ```
 
