@@ -1,5 +1,7 @@
 #!/bin/bash
 
+### call this script from your Pi ### 
+
 ### CHANGE THESE SETTINGS IF NEEDED ###
 HOSTNAME="logbook"
 LOCALE="de_DE.UTF-8"

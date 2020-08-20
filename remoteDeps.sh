@@ -1,5 +1,6 @@
 #!/bin/bash
 
+### call this script from your Pi ### 
 
 ###### ONLY DEV ######
 ### setup VIM
@@ -13,7 +14,6 @@ cp /home/$USER/dotfiles/vimrc /home/$USER/.vimrc
 
 # set vim alias to bashrc
 echo "alias v=\"vim\"" >> /home/$USER/.bashrc
-
 
 
 #### make GPS-Logbook folder (deploy folder) ####
