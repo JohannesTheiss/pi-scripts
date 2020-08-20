@@ -2,10 +2,8 @@
 
 ### CHANGE THESE SETTINGS IF NEEDED ###
 HOSTNAME="logbook"
-#LOCALE="de_DE.UTF-8"
-#LAYOUT="de"
+LOCALE="de_DE.UTF-8"
 WIFICOUNTRY="DE"
-
 
 
 # enable development sources 
@@ -25,13 +23,8 @@ echo -e "\e[1;32mset hostname....\e[0m"
 raspi-config nonint do_hostname ${HOSTNAME} 
 
 # set locale
-# echo -e "\e[1;32mset locale....\e[0m" 
-# raspi-config nonint do_change_locale ${LOCALE}
-
-# keyboard layout
-# echo -e "\e[1;32mset keyboard layout....\e[0m" 
-# error on tty (dead_belowmacron)
-# raspi-config nonint do_configure_keyboard ${LAYOUT} 
+echo -e "\e[1;32mset locale....\e[0m" 
+raspi-config nonint do_change_locale ${LOCALE}
 
 # set wifi country 
 echo -e "\e[1;32mset wifi country....\e[0m" 
@@ -45,11 +38,9 @@ echo -e "\e[1;32mdisable bluetooth....\e[0m"
 systemctl disable hciuart.service
 systemctl disable bluetooth.service
 
-
 # Memory split more memory for the GPU
 # RPI 3 b+ -> 1 GP RAM -> max. gpu_mem = 512 MB
-# gpu_mem=16 # min -> add to config.txt
-
+# gpu_mem=16 is min -> add to config.txt
 
 # add to /boot/config.txt
 echo -e "\e[1;32madd to config.txt....\e[0m" 
@@ -66,13 +57,11 @@ hdmi_ignore_hotplug=1
 hdmi_ignore_composite=1
 LINES
 
-
 ### ssh setting ###
 echo -e "\e[1;32mssh only allow pi-user....\e[0m" 
 echo "AllowUsers pi" >> /etc/ssh/sshd_config
 # sudo sshd -t # test the sshd_config 
 systemctl restart sshd
-
 
 ### expand filesystem ###
 echo -e "\e[1;32mexpand filesystem....\e[0m" 
@@ -92,11 +81,9 @@ fi
 # disable raspi-config 
 systemctl disable raspi-config
 
-
-
 # reboot
 read -p "reboot? [y/n] " -n 1 -r
-echo    # (optional) move to a new line
+echo    
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
     exit 1
