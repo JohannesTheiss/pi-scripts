@@ -1,5 +1,5 @@
 ## Init-Scripts
-setting up a cross-compiling env.
+setting up a cross-compiling environment
 
 ### INSTALL
 You need a raspberry pi with Raspberry Pi OS on it.\
