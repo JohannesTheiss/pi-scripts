@@ -2,7 +2,8 @@
 setting up a cross-compiling env.
 
 ### Usage
-you need a raspberry pi with raspberry pi os on it
+you need a raspberry pi with [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os) on it
+we use the Raspberry Pi OS (32-bit) Lite
 
 #### [on the pi]
 1. Change pw of pi user:
