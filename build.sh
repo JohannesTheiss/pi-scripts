@@ -24,9 +24,5 @@ $SOURCEDIR/qtbase/qtbase-everywhere-src-5.13.1/configure -debug -eglfs -opengl e
     -pkg-config -no-use-gold-linker -v 
 
 
-
-
-
 echo -e "\e[1;32mrun: make -j<number of cores>\e[0m" 
 echo -e "\e[1;32mrun: make install\e[0m" 
-
