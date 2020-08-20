@@ -2,12 +2,13 @@
 
 ### call this script from your qt-project-folder ### 
 
-
+### CHANGE THESE SETTINGS IF NEEDED ###
 PIQMAKE=/home/johannes/fh/GPS_Logbook/Pi/raspi-qt/tools/build-tools/bin/qmake
 EXECNAME="main"
 PIUSER="pi"
 PINAME="logbook"
 TARGET_PATH=/home/pi/qt
+
 
 echo -e "\e[1;32mbuild qt-project....\e[0m" 
 $PIQMAKE
