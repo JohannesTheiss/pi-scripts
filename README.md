@@ -5,7 +5,7 @@ setting up a cross-compiling environment
 You need a raspberry pi with Raspberry Pi OS on it.\
 We use the **Raspberry Pi OS (32-bit) Lite**.
 
-#### [on the pi]
+##### [on the pi]
 1. Change pw of pi user:
     ```
     passwd 
@@ -79,7 +79,7 @@ We use the **Raspberry Pi OS (32-bit) Lite**.
     sudo vim /usr/bin/startx
     ```
 
-#### [on the host]
+##### [on the host]
 7. run localDeps.sh
     ```
     sudo ./localDeps.sh
@@ -113,7 +113,7 @@ We use the **Raspberry Pi OS (32-bit) Lite**.
     /path/to/deploy.sh  
     ```
 
-#### [on the pi]
+##### [on the pi]
 12. run your qt app
     ```
     sudo startx /path/to/exec
@@ -129,7 +129,7 @@ We use the **Raspberry Pi OS (32-bit) Lite**.
     ```
     cd <SOURCEDIR>
     pimake
-    make -j6
+    make -j<number of cores>
     make install
     ```
 
