@@ -87,7 +87,7 @@ tar -vxf $WORKINGDIR/tools/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.t
 
 ### get SYMLINK-SCRIPT ###
 # get symlink-script from https://github.com/Kukkimonsuta/rpi-buildqt
-# to replace symbolic links with relative links in sysroot ????
+# to replace symbolic links with relative links in sysroot
 wget -N https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-relativelinks.py -P $WORKINGDIR
 chmod +x $WORKINGDIR/sysroot-relativelinks.py
 echo -e "\e[1;32madjust symlinks to be relative....\e[0m" 
