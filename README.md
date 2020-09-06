@@ -18,6 +18,7 @@ We use the **Raspberry Pi OS (32-bit) Lite**.
 
 3. run initScript.sh
     ```
+    sudo apt install git -y
     git clone https://github.com/JohannesTheiss/pi-scripts.git
     cd pi-scripts
     sudo ./initScript.sh
