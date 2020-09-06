@@ -68,7 +68,7 @@ systemctl restart sshd
 ### expand filesystem ###
 echo -e "\e[1;32mexpand filesystem....\e[0m" 
 canExpand=$(raspi-config nonint get_can_expand)
-if [ $canExpand -ne 0 ]
+if [ "$canExpand" -ne 0 ]
 then
     echo "can't expand filesystem"
     raspi-config nonint do_expand_rootfs
