@@ -21,6 +21,7 @@ We use the **Raspberry Pi OS (32-bit) Lite**.
     sudo apt install git -y
     git clone https://github.com/JohannesTheiss/pi-scripts.git
     cd pi-scripts
+    chmod +x *
     sudo ./initScript.sh
     ```
 
